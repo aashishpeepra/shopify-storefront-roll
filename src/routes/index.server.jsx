@@ -7,11 +7,11 @@ import {
   CacheDays,
 } from '@shopify/hydrogen';
 import gql from 'graphql-tag';
-import title from '../Assets/drWhite.png';
-import drImage from '../Assets/dr.png';
-import border from '../Assets/border.png';
-import divider from '../Assets/Divider.png';
-import Layout from '../components/Layout.server';
+
+
+
+
+
 import FeaturedCollection from '../components/FeaturedCollection';
 import ProductCard from '../components/ProductCard';
 import Welcome from '../components/Welcome.server';
@@ -27,19 +27,19 @@ export default function Index({country = {isoCode: 'US'}}) {
       <div className="min-h">
         <div >
           <img
-          src={title}
+          src={'./Assets/title.png'}
           className="bg-fixed bg-center h-[5vh] w-auto m-auto"
         />
         </div>
         
         <img
-          src={drImage}
+          src={'./Assets/drWhite.png'}
           className="bg-fixed bg-cneter w-auto h-[70vh] m-auto pt-10 "
         />
       </div>
       <div className="w-[99%] h-[80vh]">
         <img
-          src={divider}
+          src={'./Assets/Divider.png'}
           className="ml-3 w-[99%]  h-auto absolute bottom-[9.5rem]"
         />
         <header className="absolute w-11/12 m-auto inset-x-0 bottom-20">
@@ -62,7 +62,7 @@ export default function Index({country = {isoCode: 'US'}}) {
         </div>
       </div>
       </div>
-      <img src={border} className="top-0 fixed h-[100%] " />
+      <img src={'./Assets/border.png'} className="top-0 fixed h-[100%] " />
      
     </div>
   );
