@@ -7,37 +7,71 @@ import {
   CacheDays,
 } from '@shopify/hydrogen';
 import gql from 'graphql-tag';
-
+import title from '../Assets/drWhite.png';
+import drImage from '../Assets/dr.png';
+import border from '../Assets/border.png';
+import divider from '../Assets/Divider.png';
 import Layout from '../components/Layout.server';
 import FeaturedCollection from '../components/FeaturedCollection';
 import ProductCard from '../components/ProductCard';
 import Welcome from '../components/Welcome.server';
-import { Suspense } from 'react';
+import {Suspense} from 'react';
 
-export default function Index({ country = { isoCode: 'US' } }) {
+export default function Index({country = {isoCode: 'US'}}) {
   return (
-    <Layout hero={<GradientBackground />}>
+    <div className="min-h-screen min-w-full bg-no-repeat bg-cover bg-center  bg-[url('./Assets/bg.jpg')] pt-[40px]">
       <Suspense fallback={null}>
         <SeoForHomepage />
       </Suspense>
-      <div className="relative mb-12 min-h-screen">
-        <Welcome />
-        <div className='flex flex-col justify-items-center items-center'>
+
+      <div className="min-h">
+        <div >
+          <img
+          src={title}
+          className="bg-fixed bg-center h-[5vh] w-auto m-auto"
+        />
+        </div>
+        
+        <img
+          src={drImage}
+          className="bg-fixed bg-cneter w-auto h-[70vh] m-auto pt-10 "
+        />
+      </div>
+      <div className="w-[99%] h-[80vh]">
+        <img
+          src={divider}
+          className="ml-3 w-[99%]  h-auto absolute bottom-[9.5rem]"
+        />
+        <header className="absolute w-11/12 m-auto inset-x-0 bottom-20">
+          <nav>
+            <ul className="flex justify-between uppercase cursor-pointer text-xl text-white">
+              <li className="hover:underline">Home</li>
+              <li className="hover:underline">Pre-Rolled cones</li>
+              <li className="hover:underline">Hemp Products</li>
+              <li className="hover:underline">Glass Products</li>
+              <li className="hover:underline">Merchandies</li>
+              <li className="hover:underline">About us</li>
+            </ul>
+          </nav>
+        </header>
+        <div className='pt-[15%]'>
+        <div className="flex flex-col justify-items-center items-center ">
           <Suspense fallback={<BoxFallback />}>
             <FeaturedProductsBox country={country} />
           </Suspense>
         </div>
-
-
       </div>
-    </Layout>
+      </div>
+      <img src={border} className="top-0 fixed h-[100%] " />
+     
+    </div>
   );
 }
 
 function SeoForHomepage() {
   const {
     data: {
-      shop: { title, description },
+      shop: {title, description},
     },
   } = useShopQuery({
     query: SEO_QUERY,
@@ -60,10 +94,10 @@ function BoxFallback() {
   return <div className="bg-white p-12 shadow-xl rounded-xl mb-10 h-40"></div>;
 }
 
-function FeaturedProductsBox({ country }) {
-  const { languageCode } = useShop();
+function FeaturedProductsBox({country}) {
+  const {languageCode} = useShop();
 
-  const { data } = useShopQuery({
+  const {data} = useShopQuery({
     query: QUERY,
     variables: {
       country: country.isoCode,
@@ -82,7 +116,6 @@ function FeaturedProductsBox({ country }) {
     <div className="">
       {featuredProductsCollection ? (
         <>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             {featuredProducts.map((product) => (
               <div key={product.id}>
@@ -90,17 +123,16 @@ function FeaturedProductsBox({ country }) {
               </div>
             ))}
           </div>
-
         </>
       ) : null}
     </div>
   );
 }
 
-function FeaturedCollectionBox({ country }) {
-  const { languageCode } = useShop();
+function FeaturedCollectionBox({country}) {
+  const {languageCode} = useShop();
 
-  const { data } = useShopQuery({
+  const {data} = useShopQuery({
     query: QUERY,
     variables: {
       country: country.isoCode,

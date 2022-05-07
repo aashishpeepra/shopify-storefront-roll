@@ -31,12 +31,8 @@ export default function ProductCard({ product }) {
           )}
         </div>
 
-
-
-
-
-        <div className='flex w-full flex-wrap flex-col items-center'>
-          <div className="text-black font-semibold mb-0.5 text-xl">{product.title}</div>
+        <div className='flex w-full flex-wrap flex-col items-center '>
+          <div className="text-white font-semibold mb-0.5 text-xl">{product.title}</div>
           <Suspense fallback={null}>
             <MoneyPrice money={selectedVariant.priceV2} />
           </Suspense>

@@ -150,7 +150,7 @@ function TemplateLinks() {
  */
 export default function Welcome() {
   return (
-    <div className="text-gray-900 px-4 xl:px-12  -mx-4 xl:-mx-12 mb-40">
+    <div className="text-gray-900 px-4 xl:px-12  -mx-4 xl:-mx-12 mb-40 ">
       <h1 className='text-gray-900 text-center text-5xl'>Dr. Hemp</h1>
       <header className='mt-12'>
         <nav>
