@@ -7,10 +7,7 @@ import {
   CacheDays,
 } from '@shopify/hydrogen';
 import gql from 'graphql-tag';
-
-
-
-
+import {Image} from '@shopify/hydrogen';
 
 import FeaturedCollection from '../components/FeaturedCollection';
 import ProductCard from '../components/ProductCard';
@@ -19,27 +16,37 @@ import {Suspense} from 'react';
 
 export default function Index({country = {isoCode: 'US'}}) {
   return (
-    <div className="min-h-screen min-w-full bg-no-repeat bg-cover bg-center  bg-[url('./Assets/bg.jpg')] pt-[40px]">
+    <div className="min-h-screen  min-w-full pt-[40px]">
+      <Image
+        className="absolute top-0 left-0 z-0 "
+        src="./Assets/bg.jpg"
+        height={1080}
+        width={1920}
+      />
       <Suspense fallback={null}>
         <SeoForHomepage />
       </Suspense>
 
-      <div className="min-h">
-        <div >
-          <img
-          src={'./Assets/title.png'}
-          className="bg-fixed bg-center h-[5vh] w-auto m-auto"
-        />
-        </div>
-        
-        <img
+      <div className="min-h-screen min-w-[100vw] z-100">
+        <Image
           src={'./Assets/drWhite.png'}
-          className="bg-fixed bg-cneter w-auto h-[70vh] m-auto pt-10 "
+          height={520}
+          width={600}
+          className="absolute left-[36%] translate-x-1/2 h-[5vh] w-auto m-auto "
+        />
+
+        <Image
+          src={'./Assets/dr.png'}
+          height={520}
+          width={600}
+          className="absolute left-[10%] translate-x-1/2 w-auto h-[70vh] m-auto pt-10 "
         />
       </div>
-      <div className="w-[99%] h-[80vh]">
-        <img
+      <div className="w-[99%] h-[80vh] z-100">
+        <Image
           src={'./Assets/Divider.png'}
+          height={520}
+          width={1280}
           className="ml-3 w-[99%]  h-auto absolute bottom-[9.5rem]"
         />
         <header className="absolute w-11/12 m-auto inset-x-0 bottom-20">
@@ -54,16 +61,20 @@ export default function Index({country = {isoCode: 'US'}}) {
             </ul>
           </nav>
         </header>
-        <div className='pt-[15%]'>
-        <div className="flex flex-col justify-items-center items-center ">
-          <Suspense fallback={<BoxFallback />}>
-            <FeaturedProductsBox country={country} />
-          </Suspense>
+        <div className="pt-[15%]">
+          <div className="flex flex-col justify-items-center items-center ">
+            <Suspense fallback={<BoxFallback />}>
+              <FeaturedProductsBox country={country} />
+            </Suspense>
+          </div>
         </div>
       </div>
-      </div>
-      <img src={'./Assets/border.png'} className="top-0 fixed h-[100%] " />
-     
+      <Image
+        height={520}
+        width={1800}
+        src={'./Assets/border.png'}
+        className="top-0 fixed h-[100%] z-100 "
+      />
     </div>
   );
 }
